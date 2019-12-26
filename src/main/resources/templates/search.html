@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:fragment="head" lang="vi">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>Tìm kiếm phòng trọ</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      	<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      	<script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/BookingRoom/src/main/resources/static/css/style.css" th:href="@{css/style.css}">
+		<link rel="stylesheet" type="text/css" href="/BookingRoom/src/main/resources/static/css/style-search.css"  th:href="@{css/style-search.css}">
+		</head>
+	<body>
+		<nav th:replace="index :: header"></nav>
+		<h2 class="title">Tìm kiếm nhanh</h2>
+		<div class="container menu-1 row" >
+			<ul class="nav nav-tabs tab-1 ">
+				<li class="active"><a data-toggle="tab" href="#address">Tìm kiếm theo địa chỉ khu vực</a></li>
+				<li><a data-toggle="tab" href="#acreage">Tìm kiếm theo diện tích</a></li>
+				<li><a data-toggle="tab" href="#price">Tìm kiếm theo giá tiền</a></li>
+			</ul>
+			<div class="tab-content ">
+				<div id="address" class="tab-pane fade in active">
+					<form class="form-group form-search-group container" th:fragment="th-search" th:action="@{/search-by-address}" method="POST">
+						<h3 class="title">Tìm kiếm theo khu vực</h3>
+						<div class="row bs-content">
+							<div class="col-sm-4">
+								
+								<input  class="txt" id="city-search" type="text" placeholder="Tỉnh/thành phố" name="city"/>
+							</div>
+							<div class="col-sm-4">
+								
+								<input  class=" txt" id="district-search" type="text" placeholder="Quận/huyện" name="district"/>
+							</div>
+							<div class="col-sm-4">
+								
+								<input  class=" txt" id="block-search" type="text" placeholder="Phường/xã" name="block"/>
+							</div>
+						</div>
+						<div class="row bs-search">
+							<input class="btn-submit btn-search col-sm-3" type="submit" value="Tìm kiếm ngay">
+						</div>
+					</form>
+				</div>
+				<div id="acreage" class="tab-pane fade">
+					<form class="form-group form-search-group container" th:action="@{/search-by-acreage}" method="POST">
+						<h3 class="title">Tìm kiếm theo diện tích</h3>
+							<h4 class="title col-sm-1">Từ</h4>
+						<div class="col-sm-2">
+								
+								<input class=" txt" id="min-acreage-search" type="text" name="minAcreage" placeholder="m2" />
+							</div>
+								<h4 class="title col-sm-1">Đến</h4>
+								<div class="col-sm-2">
+								<input class=" txt" id="max-acreage-search" type="text" name="maxAcreage" placeholder="m2"/>
+								</div>
+							<div class="row bs-search">
+							<input class="btn-submit btn-search col-sm-3" type="submit" value="Tìm kiếm ngay">
+						</div>
+					</form>
+				</div>
+				<div id="price" class="tab-pane fade">
+					<form class="form-group form-search-group container" th:action="@{/search-by-price}" method="POST">
+						<h3 class="title">Tìm kiếm theo giá tiền</h3>
+								<h4 class="title col-sm-1">Từ</h4>
+						<div class="col-sm-2">
+								
+								<input class=" txt" id="min-price-search" type="text" name="minPrice" placeholder="VND" />
+							</div>
+								<h4 class="title col-sm-1">Đến</h4>
+								<div class="col-sm-2">
+								<input class=" txt" id="max-price-search" type="text" name="maxPrice" placeholder="VND"/>
+								</div>
+							<div class="row bs-search">
+							<input class="btn-submit btn-search col-sm-3" type="submit" value="Tìm kiếm ngay">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="tab-content">
+			<h3>Kết quả</h3>
+				<div class="post-item color-red" th:each="post,iterStat : ${posts}">
+					<div class="thumb-image">
+						<a th:href="@{/seePost/} + ${post.post_id}"
+							title="Cho thuê phòng trọ sạch sẽ, an ninh, cách mặt tiền đường Nguyễn Duy Trinh 50m">
+							<img class=""
+							data-src="https://img.homedy.com/store/images/2018/11/22/1-636784879280933592.jpg_200x200.jpg"
+							alt="Cho thuê phòng trọ sạch sẽ, an ninh, cách mặt tiền đường Nguyễn Duy Trinh 50m"
+							src="https://img.homedy.com/store/images/2018/11/22/1-636784879280933592.jpg_200x200.jpg">
+						</a>
+						<div class="distance">
+							<span class="ic-distance"></span> <span class="number">6.6
+								km</span>
+						</div>
+						<div class="price" ><span th:text="${post.price}"></span>m<sup>2</sup>/tháng</div>
+						<div class="status"></div>
+						<div class="bg-opacity"></div>
+					</div>
+					<div class="info">
+						<a  th:href="@{/seePost/} + ${post.post_id}"
+							title="Cho thuê phòng trọ sạch sẽ, an ninh, cách mặt tiền đường Nguyễn Duy Trinh 50m">
+							<div class="name" th:text="${post.title}"></div>
+						</a>
+						<div class="description" th:text="${post.description}"></div>
+						<div class="address" th:text="${post.address}"></div>
+						<div class="date">Ngày đăng: <span th:text="${post.start_date}"></span></div>
+						<!-- Show only mobile -->
+						<div class="distance-price-mobile" style="display: none">
+							<span>6.6 km</span> <span><span th:text="${post.price}"></span>m<sup>2</sup>/tháng</span>
+						</div>
+							<!-- End -->
+						<div class="detail" th:each="account,iterStat : ${listAccount}" th:if="${post.user_id} == ${account.user_id}">
+							<div class="col price">
+								<span th:text="${post.price}"></span> <span>VNĐ/tháng</span>
+							</div>
+							<div class="col acreage">
+								<span th:text="${post.acreage}"></span> <span>m<sup>2</sup></span>
+							</div>
+							<div class="col name">
+								<div class="fullname">
+									<a href="#" th:title="${account.name}" th:text="${account.name}">Trần Tiến Đạt</a> &nbsp;|
+								</div>
+								<div class="mobile mobile-counter" data-type="2">
+									<span class="mobile-visible-part" th:text="${account.phone_number}">0888992</span>
+								</div>
+								<a href="tel:${account.phone_number}" class="mobile" title="${account.phone_number}"
+										style="display: none" th:text="${account.phone_number}">0888992345</a>
+									<!-- Show only mobile -->
+								<div class="date-mobile" style="display: none">Ngày đăng: <span th:if="${post.start_date}"></span></div>
+									<!-- End -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer th:replace="index :: footer"></footer>
+	</body>
+	</body>
+</html>

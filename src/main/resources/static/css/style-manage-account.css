@@ -1,0 +1,85 @@
+/*manage account css*/
+.title-section{
+	margin-top:100px;
+}
+.title-page {
+	color: #EE7C6B;
+	font-family: Calibri Light;
+}
+
+.title-tab {
+	color: #fff;
+	font-family: Calibri Light;
+}
+
+.content-in-tab {
+	color: #fff;
+	font-family: Calibri Light;
+}
+
+.input-group, .btn-submit {
+	width: 60%;
+}
+
+#password_new1 {
+	margin-bottom: 15px;
+}
+
+.form-control:focus {
+	box-shadow: none;
+}
+
+.form-horizontal .control-label {
+	padding-top: 12px;
+	color: #EE7C6B;
+	font-family: Calibri Light;
+	font-size: 18px;
+}
+
+}
+.control-label, .td-title {
+	font-size: 17px;
+	color: #EE7C6B;
+	font-family: Calibri Light;
+}
+
+.txt {
+	font-size: 16px;
+}
+
+.td-title {
+	white-space: nowrap;
+	text-align: center;
+}
+
+.pass {
+	background: url(/img/key-icon.png) no-repeat 9px 24px;
+}
+
+.email {
+	background: url(/img/email-icon.png) no-repeat 6px 9px;
+}
+.addresss{
+	background: url(/img/address-icon.png) no-repeat 6px 7px;
+}
+.user {
+	background: url(/img/user-icon.png) no-repeat 5px 6px;
+}
+
+.disabled-input.phone {
+	background: url(/img/phone-icon.png) no-repeat 5px 7px;
+}
+.disabled-input.user-id {
+	background: url(/img/number-sign-icon.png) no-repeat 6px 9px;
+}
+.tab-content{
+	padding-top: 100px;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: rgba(255,255,255,0);
+    opacity: 1;
+}
+.last-content{
+    margin-bottom: 0px;
+    padding-top: 20px;
+}

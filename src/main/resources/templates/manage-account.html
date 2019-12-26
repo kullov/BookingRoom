@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head" lang="vi">
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Quản lý tài khoản</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="/BookingRoom/src/main/resources/static/css/style.css"
+	th:href="@{/css/style.css}">
+<link rel="stylesheet" type="text/css"
+	href="/BookingRoom/src/main/resources/static/css/style-manage-account.css"
+	th:href="@{/css/style-manage-account.css}">
+<link rel="stylesheet" type="text/css"
+	href="/BookingRoom/src/main/resources/static/css/style-list-account.css"
+	th:href="@{/css/style-list-account.css}">
+</head>
+<body>
+	<nav th:replace="index :: header"></nav>
+	<div th:fragment="th-manage-account">
+		<div class="container">
+			<!-- Nav tabs -->
+			<ul class="nav nav-pills  nav-stacked col-md-3" role="tablist">
+				<li>
+					<div class="title-section">
+						<h1 class="title-page">Quản lý tài khoản</h1>
+						<div class="group-tabs"></div>
+					</div>
+				</li>
+				<li role="presentation" th:classappend="${#request.getRequestURI() == '/manage-account/profile' ? 'active':''}">
+					<a href="#profile" th:href="@{/#profile}" aria-controls="profile" role="tab" data-toggle="tab" class="title-tab">Thông tin cá nhân</a>
+				</li>
+				<li role="presentation" th:classappend="${#request.getRequestURI() == '/manage-account/manage-posts' ? 'active':''}">
+					<a href="#manage-posts" th:href="@{/#manage-posts}" aria-controls="manage-posts" role="tab" data-toggle="tab" class="title-tab">Quản lý tin đăng</a>
+				</li>
+				<li role="presentation" th:classappend="${#request.getRequestURI() == '/manage-account/transaction-history' ? 'active':''}">
+					<a href="#transaction-history" th:href="@{/#transaction-history}" aria-controls="transaction-history" role="tab" data-toggle="tab" class="title-tab">Lịch sử giao dịch</a>
+				</li>
+			</ul>
+			<!-- Tab panes -->
+			<div class="tab-content  col-md-9">
+				<!-- profile -->
+				<div role="tabpanel" class="tab-pane content-in-tab"
+					id="profile" th:classappend="${#request.getRequestURI() == '/manage-account/profile' ? 'active':''}">
+					<div class="user_profile_left" th:fragment="th-edit-account">
+						<div class="user_profile_form">
+							<form  th:replace="edit-account :: th-form-edit-account"></form>
+						</div>
+					</div>
+				</div>
+				<!-- manage-posts -->
+				<div role="tabpanel" class="tab-pane content-in-tab"
+					id="manage-posts" th:classappend="${#request.getRequestURI() == '/manage-account/manage-posts' ? 'active':''}">
+					<div class="col-md-9 col-sm-8 col-xs-12"
+						th:replace="list-post :: th-list-post-1"></div>
+					<th:block class="col-md-9 col-sm-8 col-xs-12"
+						th:replace="list-post :: th-list-post-2"></th:block>
+					<th:block class="col-md-9 col-sm-8 col-xs-12"
+						th:replace="list-post :: th-list-post-3"></th:block>
+				</div>
+				<div role="tabpanel" class="tab-pane content-in-tab"
+					id="transaction-history"  th:classappend="${#request.getRequestURI() == '/manage-account/transaction-history' ? 'active':''}">Coming soon!</div>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="index :: footer"></footer>
+</body>
+</html>
