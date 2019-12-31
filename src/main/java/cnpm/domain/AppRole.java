@@ -13,7 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tbl_role", catalog = "booking_room")
+@Table(name = "tbl_role", catalog = "bookingroom")
 public class AppRole implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
