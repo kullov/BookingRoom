@@ -22,7 +22,6 @@ import cnpm.service.AccountService;
 @SpringBootTest(classes = BookingRoomApplication.class)
 public class BookingRoomApplicationTests {
 	
-	@ỊnjectMocks
 	private AccountService service;
 	
 	@Mock
